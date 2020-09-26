@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Asteroids
 {
@@ -32,6 +34,14 @@ namespace Asteroids
         public void MoveRight(int asteroidSpeed)
         {
             asteroidX += asteroidSpeed;
+        }
+
+        public Boolean Collision(Asteroids a)
+        {
+            Rectangle asteroidRec = new Rectangle(a.asteroidX, a.asteroidY, a.size, a.size);
+            Rectangle shipRec = new Rectangle(asteroidX, asteroidY, size, size);
+
+            return asteroidRec.IntersectsWith(shipRec);
         }
     }
 }

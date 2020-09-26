@@ -25,7 +25,10 @@ namespace Asteroids
         List<Asteroids> upAsteroidList = new List<Asteroids>();
         List<Asteroids> rightAsteroidList = new List<Asteroids>();
         List<Asteroids> leftAsteroidList = new List<Asteroids>();
-        List<Lazers> lazerList = new List<Lazers>();
+        List<Lazers> downLazerList = new List<Lazers>();
+        List<Lazers> upLazerList = new List<Lazers>();
+        List<Lazers> rightLazerList = new List<Lazers>();
+        List<Lazers> leftLazerList = new List<Lazers>();
 
         int asteroidSpeed = 3;
         int asteroidDirection;
@@ -43,6 +46,8 @@ namespace Asteroids
         SolidBrush lazerBrush = new SolidBrush(Color.Cyan);
 
         Random rand = new Random();
+
+        Asteroids ship = new Asteroids(20, 240, 240);
 
         public void SetParameters()
         {
@@ -68,29 +73,65 @@ namespace Asteroids
             {
                 Lazers newLazer = new Lazers(lazerSize, 250, 250);
 
-                lazerList.Add(newLazer);
-
-                foreach (Lazers l in lazerList)
+                switch (turnCounter)
                 {
-                    switch (turnCounter)
-                    {
-                             case 0:
-                             
-                        
-                    }
+                    case 0:
+                        upLazerList.Add(newLazer);
+                        break;
+                    case 1:
+                        leftLazerList.Add(newLazer);
+                        break;
+                    case 2:
+                        downLazerList.Add(newLazer);
+                        break;
+                    case 3:
+                        rightLazerList.Add(newLazer);
+                        break;
                 }
-                
 
+            }
+            foreach (Lazers l in upLazerList)
+            {
+                l.MoveUp(lazerSpeed);
+            }
+            foreach (Lazers l in downLazerList)
+            {
+                l.MoveDown(lazerSpeed);
+            }
+            foreach (Lazers l in leftLazerList)
+            {
+                l.MoveLeft(lazerSpeed);
+            }
+            foreach (Lazers l in rightLazerList)
+            {
+                l.MoveRight(lazerSpeed);
+            }
+
+            if (downLazerList.Count > 0 && downLazerList[0].lazerY >= this.Height)
+            {
+                downLazerList.RemoveAt(0);
+            }
+            else if (leftLazerList.Count > 0 && leftLazerList[0].lazerX <= 0)
+            {
+                leftLazerList.RemoveAt(0);
+            }
+            else if (upLazerList.Count > 0 && upLazerList[0].lazerY <= 0)
+            {
+                upLazerList.RemoveAt(0);
+            }
+            else if (rightLazerList.Count > 0 && rightLazerList[0].lazerX >= this.Width)
+            {
+                rightLazerList.RemoveAt(0);
             }
         }
 
         public void AsteroidControl()
         {
-            foreach(Asteroids a in downAsteroidList)
+            foreach (Asteroids a in downAsteroidList)
             {
                 a.MoveDown(asteroidSpeed);
             }
-            foreach(Asteroids a in leftAsteroidList)
+            foreach (Asteroids a in leftAsteroidList)
             {
                 a.MoveRight(asteroidSpeed);
             }
@@ -129,21 +170,38 @@ namespace Asteroids
                 tickCounter = 0;
             }
 
-            if (downAsteroidList.Count > 0 && downAsteroidList[0].asteroidY >= 450)
+            if (downAsteroidList.Count > 0 && downAsteroidList[0].asteroidY >= 250)
             {
                 downAsteroidList.RemoveAt(0);
             }
-            else if (leftAsteroidList.Count > 0 && leftAsteroidList[0].asteroidX >= 450)
+            else if (leftAsteroidList.Count > 0 && leftAsteroidList[0].asteroidX >= 250)
             {
                 leftAsteroidList.RemoveAt(0);
             }
-            else if (upAsteroidList.Count > 0 && upAsteroidList[0].asteroidY <= 50)
+            else if (upAsteroidList.Count > 0 && upAsteroidList[0].asteroidY <= 250)
             {
                 upAsteroidList.RemoveAt(0);
             }
-            else if (rightAsteroidList.Count > 0 && rightAsteroidList[0].asteroidX <= 50)
+            else if (rightAsteroidList.Count > 0 && rightAsteroidList[0].asteroidX <= 250)
             {
                 rightAsteroidList.RemoveAt(0);
+            }
+
+            foreach (Asteroids a in leftAsteroidList.Union(rightAsteroidList).Union(downAsteroidList).Union(upAsteroidList))
+            {
+                if (ship.Collision(a))
+                {
+                    gameLoop.Stop();
+
+
+
+
+                    //Form f = this.FindForm();
+                    //f.Controls.Remove(this);
+                    //GameOver go = new GameOver();
+                    //f.Controls.Add(go);
+
+                }
             }
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -190,7 +248,7 @@ namespace Asteroids
             {
                 e.Graphics.FillRectangle(asteroidBrush, a.asteroidX, a.asteroidY, a.size, a.size);
             }
-            foreach (Lazers l in lazerList)
+            foreach (Lazers l in downLazerList.Union(upLazerList).Union(leftLazerList).Union(rightLazerList))
             {
                 e.Graphics.FillRectangle(lazerBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
             }
