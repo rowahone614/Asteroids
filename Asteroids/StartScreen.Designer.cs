@@ -79,7 +79,6 @@
             this.Controls.Add(this.startButton);
             this.Name = "StartScreen";
             this.Size = new System.Drawing.Size(500, 500);
-            this.Load += new System.EventHandler(this.StartScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

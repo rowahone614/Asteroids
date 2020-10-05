@@ -10,22 +10,30 @@ using System.Windows.Forms;
 
 namespace Asteroids
 {
-    public partial class StartScreen : UserControl
+    public partial class GameOver : UserControl
     {
-        public StartScreen()
+        public GameOver()
         {
             InitializeComponent();
         }
 
-        private void startButton_Click(object sender, EventArgs e)
+        private void playAgainButton_Click(object sender, EventArgs e)
         {
             Form f = this.FindForm();
             f.Controls.Remove(this);
-
             GameScreen gs = new GameScreen();
             f.Controls.Add(gs);
-
             gs.Focus();
+        }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void GameOver_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

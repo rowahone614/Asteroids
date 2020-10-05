@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.Threading;
 
 namespace Asteroids
 {
@@ -21,22 +23,19 @@ namespace Asteroids
         //Global Variables
         Boolean spaceDown, cKeyDown;
 
-        List<Asteroids> downAsteroidList = new List<Asteroids>();
-        List<Asteroids> upAsteroidList = new List<Asteroids>();
-        List<Asteroids> rightAsteroidList = new List<Asteroids>();
-        List<Asteroids> leftAsteroidList = new List<Asteroids>();
-        List<Lazers> downLazerList = new List<Lazers>();
-        List<Lazers> upLazerList = new List<Lazers>();
-        List<Lazers> rightLazerList = new List<Lazers>();
-        List<Lazers> leftLazerList = new List<Lazers>();
+        List<Asteroids> asteroidList = new List<Asteroids>();
+        List<Lazers> lazerList = new List<Lazers>();
 
         int asteroidSpeed = 3;
         int asteroidDirection;
         int asteroidSize = 10;
+        int asteroidInterval = 75;
 
         int frameCounter = 0;
-        int tickCounter = 0;
+        int tickCounter = 51;
         int turnCounter = 0;
+        int shotCounter = 51;
+        int speedController = 0;
 
         int lazerSpeed = 5;
         int lazerSize = 3;
@@ -45,16 +44,15 @@ namespace Asteroids
         SolidBrush asteroidBrush = new SolidBrush(Color.Red);
         SolidBrush lazerBrush = new SolidBrush(Color.Cyan);
 
+        SoundPlayer lazerBlast = new SoundPlayer(Properties.Resources.lazerBlast);
+        SoundPlayer crashSound = new SoundPlayer(Properties.Resources.crashSound);
         Random rand = new Random();
 
-        Asteroids ship = new Asteroids(20, 240, 240);
+        Asteroids shipHitBox = new Asteroids(20, 240, 240, "Up");
+
 
         public void SetParameters()
         {
-            Asteroids newAsteroid = new Asteroids(asteroidSize, 245, 0);
-
-            downAsteroidList.Add(newAsteroid);
-
             turnCounter = 0;
             asteroidSpeed = 5;
             asteroidSize = 10;
@@ -69,139 +67,142 @@ namespace Asteroids
                 }
                 frameCounter = 0;
             }
-            if (cKeyDown)
+            shotCounter++;
+            if (cKeyDown && shotCounter > 10)
             {
-                Lazers newLazer = new Lazers(lazerSize, 250, 250);
+                lazerBlast.Play();
+                shotCounter = 0;
 
                 switch (turnCounter)
                 {
                     case 0:
-                        upLazerList.Add(newLazer);
+                        Lazers newUpLazer = new Lazers(lazerSize, 250, 250, "Up");
+                        lazerList.Add(newUpLazer);
                         break;
                     case 1:
-                        leftLazerList.Add(newLazer);
+                        Lazers newLeftLazer = new Lazers(lazerSize, 250, 250, "Left");
+                        lazerList.Add(newLeftLazer);
                         break;
                     case 2:
-                        downLazerList.Add(newLazer);
+                        Lazers newDownLazer = new Lazers(lazerSize, 250, 250, "Down");
+                        lazerList.Add(newDownLazer);
                         break;
                     case 3:
-                        rightLazerList.Add(newLazer);
+                        Lazers newRightLazer = new Lazers(lazerSize, 250, 250, "Right");
+                        lazerList.Add(newRightLazer);
                         break;
                 }
 
             }
-            foreach (Lazers l in upLazerList)
+            foreach (Lazers l in lazerList)
             {
-                l.MoveUp(lazerSpeed);
-            }
-            foreach (Lazers l in downLazerList)
-            {
-                l.MoveDown(lazerSpeed);
-            }
-            foreach (Lazers l in leftLazerList)
-            {
-                l.MoveLeft(lazerSpeed);
-            }
-            foreach (Lazers l in rightLazerList)
-            {
-                l.MoveRight(lazerSpeed);
+                if (l.direction == "Up")
+                {
+                    l.MoveUp(lazerSpeed);
+                }
+                else if (l.direction == "Left")
+                {
+                    l.MoveLeft(lazerSpeed);
+                }
+                else if (l.direction == "Down")
+                {
+                    l.MoveDown(lazerSpeed);
+                }
+                else if (l.direction == "Right")
+                {
+                    l.MoveRight(lazerSpeed);
+                }
             }
 
-            if (downLazerList.Count > 0 && downLazerList[0].lazerY >= this.Height)
+            if (lazerList.Count > 0 && (lazerList[0].lazerY >= this.Height || lazerList[0].lazerY <= 0 
+                || lazerList[0].lazerX >= this.Width ||lazerList[0].lazerX <= 0))
             {
-                downLazerList.RemoveAt(0);
-            }
-            else if (leftLazerList.Count > 0 && leftLazerList[0].lazerX <= 0)
-            {
-                leftLazerList.RemoveAt(0);
-            }
-            else if (upLazerList.Count > 0 && upLazerList[0].lazerY <= 0)
-            {
-                upLazerList.RemoveAt(0);
-            }
-            else if (rightLazerList.Count > 0 && rightLazerList[0].lazerX >= this.Width)
-            {
-                rightLazerList.RemoveAt(0);
+                lazerList.RemoveAt(0);
             }
         }
 
         public void AsteroidControl()
         {
-            foreach (Asteroids a in downAsteroidList)
-            {
-                a.MoveDown(asteroidSpeed);
-            }
-            foreach (Asteroids a in leftAsteroidList)
-            {
-                a.MoveRight(asteroidSpeed);
-            }
-            foreach (Asteroids a in upAsteroidList)
-            {
-                a.MoveUp(asteroidSpeed);
-            }
-            foreach (Asteroids a in rightAsteroidList)
-            {
-                a.MoveLeft(asteroidSpeed);
-            }
-            if (tickCounter >= 75)
+
+            if (tickCounter >= asteroidInterval)
             {
                 asteroidDirection = rand.Next(1, 5);
 
                 switch (asteroidDirection)
                 {
                     case 1:
-                        Asteroids newDownAsteroid = new Asteroids(asteroidSize, 245, 0);
-                        downAsteroidList.Add(newDownAsteroid);
+                        Asteroids newDownAsteroid = new Asteroids(asteroidSize, 245, 0, "Down");
+                        asteroidList.Add(newDownAsteroid);
                         break;
                     case 2:
-                        Asteroids newLeftAsteroid = new Asteroids(asteroidSize, 0, 245);
-                        leftAsteroidList.Add(newLeftAsteroid);
+                        Asteroids newLeftAsteroid = new Asteroids(asteroidSize, 0, 245, "Right");
+                        asteroidList.Add(newLeftAsteroid);
                         break;
                     case 3:
-                        Asteroids newUpAsteroid = new Asteroids(asteroidSize, 245, 500);
-                        upAsteroidList.Add(newUpAsteroid);
+                        Asteroids newUpAsteroid = new Asteroids(asteroidSize, 245, 500, "Up");
+                        asteroidList.Add(newUpAsteroid);
                         break;
                     case 4:
-                        Asteroids newRightAsteroid = new Asteroids(asteroidSize, 500, 245);
-                        rightAsteroidList.Add(newRightAsteroid);
+                        Asteroids newRightAsteroid = new Asteroids(asteroidSize, 500, 245, "Left");
+                        asteroidList.Add(newRightAsteroid);
                         break;
                 }
-
                 tickCounter = 0;
             }
 
-            if (downAsteroidList.Count > 0 && downAsteroidList[0].asteroidY >= 250)
+            foreach (Asteroids a in asteroidList)
             {
-                downAsteroidList.RemoveAt(0);
-            }
-            else if (leftAsteroidList.Count > 0 && leftAsteroidList[0].asteroidX >= 250)
-            {
-                leftAsteroidList.RemoveAt(0);
-            }
-            else if (upAsteroidList.Count > 0 && upAsteroidList[0].asteroidY <= 250)
-            {
-                upAsteroidList.RemoveAt(0);
-            }
-            else if (rightAsteroidList.Count > 0 && rightAsteroidList[0].asteroidX <= 250)
-            {
-                rightAsteroidList.RemoveAt(0);
+                if (a.direction == "Up")
+                {
+                    a.MoveUp(asteroidSpeed);
+                }
+                else if (a.direction == "Left")
+                {
+                    a.MoveLeft(asteroidSpeed);
+                }
+                else if (a.direction == "Down")
+                {
+                    a.MoveDown(asteroidSpeed);
+                }
+                else if (a.direction == "Right")
+                {
+                    a.MoveRight(asteroidSpeed);
+                }
+                
             }
 
-            foreach (Asteroids a in leftAsteroidList.Union(rightAsteroidList).Union(downAsteroidList).Union(upAsteroidList))
+            foreach (Asteroids a in asteroidList)
             {
-                if (ship.Collision(a))
+                if (shipHitBox.shipCollision(a))
                 {
+                    crashSound.Play();
                     gameLoop.Stop();
 
-
-
-
-                    //Form f = this.FindForm();
-                    //f.Controls.Remove(this);
-                    //GameOver go = new GameOver();
-                    //f.Controls.Add(go);
-
+                    Form f = this.FindForm();
+                    f.Controls.Remove(this);
+                    GameOver go = new GameOver();
+                    f.Controls.Add(go);
+                    return;
                 }
+            }
+
+            foreach (Lazers l in lazerList)
+            {
+                foreach (Asteroids a in asteroidList)
+                {
+                    if (a.lazerCollision(l))
+                    {
+                        asteroidList.Remove(a);
+                        lazerList.Remove(l);
+                        return;
+                    }
+                }
+            }
+
+            if (speedController >= 500 && asteroidInterval >= 30)
+            {
+                asteroidInterval -= 3;
+                speedController = 0;
             }
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -238,17 +239,18 @@ namespace Asteroids
             AsteroidControl();
             frameCounter++;
             tickCounter++;
+            speedController++;
             Refresh();
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
 
-            foreach (Asteroids a in downAsteroidList.Union(leftAsteroidList).Union(upAsteroidList).Union(rightAsteroidList))
+            foreach (Asteroids a in asteroidList)
             {
                 e.Graphics.FillRectangle(asteroidBrush, a.asteroidX, a.asteroidY, a.size, a.size);
             }
-            foreach (Lazers l in downLazerList.Union(upLazerList).Union(leftLazerList).Union(rightLazerList))
+            foreach (Lazers l in lazerList)
             {
                 e.Graphics.FillRectangle(lazerBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
             }
