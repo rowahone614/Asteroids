@@ -77,5 +77,23 @@ namespace Asteroids.Properties {
                 return ResourceManager.GetStream("lazerBlast", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream levelUpSound {
+            get {
+                return ResourceManager.GetStream("levelUpSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream scoreUpSound {
+            get {
+                return ResourceManager.GetStream("scoreUpSound", resourceCulture);
+            }
+        }
     }
 }

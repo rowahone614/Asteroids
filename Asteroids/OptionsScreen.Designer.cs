@@ -39,6 +39,8 @@
             this.returnMenuButton = new System.Windows.Forms.Button();
             this.startLevelLabel = new System.Windows.Forms.Label();
             this.startLevelValue = new System.Windows.Forms.NumericUpDown();
+            this.setSoundLabel = new System.Windows.Forms.Label();
+            this.soundChoiceBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.lazerColourValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asteroidColourValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shipColourValue)).BeginInit();
@@ -59,33 +61,33 @@
             // lazerColourLabel
             // 
             this.lazerColourLabel.AutoSize = true;
-            this.lazerColourLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lazerColourLabel.Font = new System.Drawing.Font("Impact", 15F);
             this.lazerColourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lazerColourLabel.Location = new System.Drawing.Point(51, 142);
+            this.lazerColourLabel.Location = new System.Drawing.Point(57, 142);
             this.lazerColourLabel.Name = "lazerColourLabel";
-            this.lazerColourLabel.Size = new System.Drawing.Size(130, 25);
+            this.lazerColourLabel.Size = new System.Drawing.Size(115, 25);
             this.lazerColourLabel.TabIndex = 1;
             this.lazerColourLabel.Text = "Lazer Colour:";
             // 
             // asteroidColourLabel
             // 
             this.asteroidColourLabel.AutoSize = true;
-            this.asteroidColourLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.asteroidColourLabel.Font = new System.Drawing.Font("Impact", 15F);
             this.asteroidColourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.asteroidColourLabel.Location = new System.Drawing.Point(51, 213);
+            this.asteroidColourLabel.Location = new System.Drawing.Point(57, 213);
             this.asteroidColourLabel.Name = "asteroidColourLabel";
-            this.asteroidColourLabel.Size = new System.Drawing.Size(153, 25);
+            this.asteroidColourLabel.Size = new System.Drawing.Size(140, 25);
             this.asteroidColourLabel.TabIndex = 2;
             this.asteroidColourLabel.Text = "Asteroid Colour:";
             // 
             // shipColourLabel
             // 
             this.shipColourLabel.AutoSize = true;
-            this.shipColourLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.shipColourLabel.Font = new System.Drawing.Font("Impact", 15F);
             this.shipColourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.shipColourLabel.Location = new System.Drawing.Point(51, 284);
+            this.shipColourLabel.Location = new System.Drawing.Point(57, 284);
             this.shipColourLabel.Name = "shipColourLabel";
-            this.shipColourLabel.Size = new System.Drawing.Size(121, 25);
+            this.shipColourLabel.Size = new System.Drawing.Size(108, 25);
             this.shipColourLabel.TabIndex = 3;
             this.shipColourLabel.Text = "Ship Colour:";
             // 
@@ -128,11 +130,11 @@
             // colourValueLabel
             // 
             this.colourValueLabel.AutoSize = true;
-            this.colourValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.colourValueLabel.Font = new System.Drawing.Font("Impact", 15F);
             this.colourValueLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.colourValueLabel.Location = new System.Drawing.Point(77, 88);
+            this.colourValueLabel.Location = new System.Drawing.Point(103, 86);
             this.colourValueLabel.Name = "colourValueLabel";
-            this.colourValueLabel.Size = new System.Drawing.Size(339, 25);
+            this.colourValueLabel.Size = new System.Drawing.Size(295, 25);
             this.colourValueLabel.TabIndex = 7;
             this.colourValueLabel.Text = "Red - 0, Blue - 1, Green - 2, Yellow - 3";
             // 
@@ -150,19 +152,19 @@
             // startLevelLabel
             // 
             this.startLevelLabel.AutoSize = true;
-            this.startLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.startLevelLabel.Font = new System.Drawing.Font("Impact", 15F);
             this.startLevelLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startLevelLabel.Location = new System.Drawing.Point(259, 213);
+            this.startLevelLabel.Location = new System.Drawing.Point(257, 142);
             this.startLevelLabel.Name = "startLevelLabel";
-            this.startLevelLabel.Size = new System.Drawing.Size(137, 25);
+            this.startLevelLabel.Size = new System.Drawing.Size(126, 25);
             this.startLevelLabel.TabIndex = 9;
             this.startLevelLabel.Text = "Starting Level:";
             // 
             // startLevelValue
             // 
-            this.startLevelValue.Location = new System.Drawing.Point(392, 218);
+            this.startLevelValue.Location = new System.Drawing.Point(389, 147);
             this.startLevelValue.Maximum = new decimal(new int[] {
-            9,
+            8,
             0,
             0,
             0});
@@ -180,11 +182,35 @@
             0,
             0});
             // 
+            // setSoundLabel
+            // 
+            this.setSoundLabel.AutoSize = true;
+            this.setSoundLabel.Font = new System.Drawing.Font("Impact", 15F);
+            this.setSoundLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.setSoundLabel.Location = new System.Drawing.Point(257, 213);
+            this.setSoundLabel.Name = "setSoundLabel";
+            this.setSoundLabel.Size = new System.Drawing.Size(125, 25);
+            this.setSoundLabel.TabIndex = 11;
+            this.setSoundLabel.Text = "Sound Effects:";
+            // 
+            // soundChoiceBox
+            // 
+            this.soundChoiceBox.AutoSize = true;
+            this.soundChoiceBox.Checked = true;
+            this.soundChoiceBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.soundChoiceBox.Location = new System.Drawing.Point(387, 220);
+            this.soundChoiceBox.Name = "soundChoiceBox";
+            this.soundChoiceBox.Size = new System.Drawing.Size(15, 14);
+            this.soundChoiceBox.TabIndex = 12;
+            this.soundChoiceBox.UseVisualStyleBackColor = true;
+            // 
             // OptionsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.soundChoiceBox);
+            this.Controls.Add(this.setSoundLabel);
             this.Controls.Add(this.startLevelValue);
             this.Controls.Add(this.startLevelLabel);
             this.Controls.Add(this.returnMenuButton);
@@ -220,5 +246,7 @@
         private System.Windows.Forms.Button returnMenuButton;
         private System.Windows.Forms.Label startLevelLabel;
         private System.Windows.Forms.NumericUpDown startLevelValue;
+        private System.Windows.Forms.Label setSoundLabel;
+        private System.Windows.Forms.CheckBox soundChoiceBox;
     }
 }

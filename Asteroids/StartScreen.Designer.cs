@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartScreen));
             this.startButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.asteroidPNGBox = new System.Windows.Forms.PictureBox();
             this.instructionLabel = new System.Windows.Forms.Label();
             this.countLabel = new System.Windows.Forms.Label();
             this.optionsButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asteroidPNGBox)).BeginInit();
             this.SuspendLayout();
             // 
             // startButton
@@ -62,36 +62,36 @@
             this.titleLabel.TabIndex = 2;
             this.titleLabel.Text = "Asteroids";
             // 
-            // pictureBox1
+            // asteroidPNGBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(175, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 153);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.asteroidPNGBox.Image = ((System.Drawing.Image)(resources.GetObject("asteroidPNGBox.Image")));
+            this.asteroidPNGBox.Location = new System.Drawing.Point(175, 37);
+            this.asteroidPNGBox.Name = "asteroidPNGBox";
+            this.asteroidPNGBox.Size = new System.Drawing.Size(150, 153);
+            this.asteroidPNGBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.asteroidPNGBox.TabIndex = 3;
+            this.asteroidPNGBox.TabStop = false;
             // 
             // instructionLabel
             // 
             this.instructionLabel.AutoSize = true;
             this.instructionLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.instructionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructionLabel.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.instructionLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.instructionLabel.Location = new System.Drawing.Point(66, 367);
+            this.instructionLabel.Location = new System.Drawing.Point(110, 367);
             this.instructionLabel.Name = "instructionLabel";
-            this.instructionLabel.Size = new System.Drawing.Size(364, 31);
+            this.instructionLabel.Size = new System.Drawing.Size(280, 34);
             this.instructionLabel.TabIndex = 4;
             this.instructionLabel.Text = "SPACE - Rotate, C - Shoot";
             // 
             // countLabel
             // 
             this.countLabel.AutoSize = true;
-            this.countLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.countLabel.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countLabel.ForeColor = System.Drawing.Color.Aquamarine;
-            this.countLabel.Location = new System.Drawing.Point(226, 417);
+            this.countLabel.Location = new System.Drawing.Point(233, 401);
             this.countLabel.Name = "countLabel";
-            this.countLabel.Size = new System.Drawing.Size(0, 46);
+            this.countLabel.Size = new System.Drawing.Size(0, 48);
             this.countLabel.TabIndex = 5;
             // 
             // optionsButton
@@ -113,12 +113,12 @@
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.countLabel);
             this.Controls.Add(this.instructionLabel);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.asteroidPNGBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.startButton);
             this.Name = "StartScreen";
             this.Size = new System.Drawing.Size(500, 500);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asteroidPNGBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,7 +128,7 @@
 
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox asteroidPNGBox;
         private System.Windows.Forms.Label instructionLabel;
         private System.Windows.Forms.Label countLabel;
         private System.Windows.Forms.Button optionsButton;

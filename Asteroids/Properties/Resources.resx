@@ -124,4 +124,10 @@
   <data name="lazerBlast" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Laser Blasts-SoundBible.com-108608437.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="levelUpSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\glass_ping-Go445-1207030150.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="scoreUpSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pling-KevanGC-1485374730.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

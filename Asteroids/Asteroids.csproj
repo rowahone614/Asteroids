@@ -53,11 +53,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameOver.cs">
+    <Compile Include="GameOverScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GameOver.Designer.cs">
-      <DependentUpon>GameOver.cs</DependentUpon>
+    <Compile Include="GameOverScreen.Designer.cs">
+      <DependentUpon>GameOverScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GameScreen.cs">
       <SubType>UserControl</SubType>
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameOver.resx">
-      <DependentUpon>GameOver.cs</DependentUpon>
+    <EmbeddedResource Include="GameOverScreen.resx">
+      <DependentUpon>GameOverScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
@@ -126,6 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Grenade Explosion-SoundBible.com-2100581469.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glass_ping-Go445-1207030150.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pling-KevanGC-1485374730.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
