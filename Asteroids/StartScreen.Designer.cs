@@ -32,6 +32,9 @@
             this.startButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.instructionLabel = new System.Windows.Forms.Label();
+            this.countLabel = new System.Windows.Forms.Label();
+            this.optionsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +43,7 @@
             this.startButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aquamarine;
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.startButton.Font = new System.Drawing.Font("Impact", 14F);
-            this.startButton.Location = new System.Drawing.Point(175, 282);
+            this.startButton.Location = new System.Drawing.Point(175, 248);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(150, 64);
             this.startButton.TabIndex = 1;
@@ -69,11 +72,47 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // instructionLabel
+            // 
+            this.instructionLabel.AutoSize = true;
+            this.instructionLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.instructionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructionLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.instructionLabel.Location = new System.Drawing.Point(66, 367);
+            this.instructionLabel.Name = "instructionLabel";
+            this.instructionLabel.Size = new System.Drawing.Size(364, 31);
+            this.instructionLabel.TabIndex = 4;
+            this.instructionLabel.Text = "SPACE - Rotate, C - Shoot";
+            // 
+            // countLabel
+            // 
+            this.countLabel.AutoSize = true;
+            this.countLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.countLabel.ForeColor = System.Drawing.Color.Aquamarine;
+            this.countLabel.Location = new System.Drawing.Point(226, 417);
+            this.countLabel.Name = "countLabel";
+            this.countLabel.Size = new System.Drawing.Size(0, 46);
+            this.countLabel.TabIndex = 5;
+            // 
+            // optionsButton
+            // 
+            this.optionsButton.Font = new System.Drawing.Font("Impact", 14F);
+            this.optionsButton.Location = new System.Drawing.Point(175, 318);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(150, 46);
+            this.optionsButton.TabIndex = 6;
+            this.optionsButton.Text = "Options";
+            this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.optionsButton);
+            this.Controls.Add(this.countLabel);
+            this.Controls.Add(this.instructionLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.startButton);
@@ -90,5 +129,8 @@
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label instructionLabel;
+        private System.Windows.Forms.Label countLabel;
+        private System.Windows.Forms.Button optionsButton;
     }
 }

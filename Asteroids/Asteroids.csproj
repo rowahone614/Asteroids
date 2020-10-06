@@ -66,9 +66,14 @@
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Lazers.cs" />
+    <Compile Include="OptionsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionsScreen.Designer.cs">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpaceShip.cs" />
     <Compile Include="StartScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsScreen.resx">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

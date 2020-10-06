@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Asteroids
 {
@@ -19,6 +20,15 @@ namespace Asteroids
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            countLabel.Text = 3 + "";
+            Thread.Sleep(1000);
+            Refresh();
+            countLabel.Text = 2 + "";
+            Thread.Sleep(1000);
+            Refresh();
+            countLabel.Text = 1 + "";
+            Thread.Sleep(1000);
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
 
@@ -26,6 +36,15 @@ namespace Asteroids
             f.Controls.Add(gs);
 
             gs.Focus();
+        }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            OptionsScreen os = new OptionsScreen();
+            f.Controls.Add(os);
+            os.Focus();
         }
     }
 }

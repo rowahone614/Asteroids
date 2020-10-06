@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gameLoop = new System.Windows.Forms.Timer(this.components);
-            this.countDownLabel = new System.Windows.Forms.Label();
+            this.levelLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameLoop
@@ -38,24 +38,23 @@
             this.gameLoop.Interval = 20;
             this.gameLoop.Tick += new System.EventHandler(this.gameLoop_Tick);
             // 
-            // countDownLabel
+            // levelLabel
             // 
-            this.countDownLabel.BackColor = System.Drawing.Color.Transparent;
-            this.countDownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Bold);
-            this.countDownLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.countDownLabel.Location = new System.Drawing.Point(212, 118);
-            this.countDownLabel.Name = "countDownLabel";
-            this.countDownLabel.Size = new System.Drawing.Size(76, 76);
-            this.countDownLabel.TabIndex = 0;
-            this.countDownLabel.Text = "3";
-            this.countDownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.levelLabel.AutoSize = true;
+            this.levelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.levelLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.levelLabel.Location = new System.Drawing.Point(26, 25);
+            this.levelLabel.Name = "levelLabel";
+            this.levelLabel.Size = new System.Drawing.Size(70, 25);
+            this.levelLabel.TabIndex = 0;
+            this.levelLabel.Text = "Level :";
             // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Controls.Add(this.countDownLabel);
+            this.Controls.Add(this.levelLabel);
             this.DoubleBuffered = true;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(500, 500);
@@ -63,12 +62,13 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Timer gameLoop;
-        private System.Windows.Forms.Label countDownLabel;
+        private System.Windows.Forms.Label levelLabel;
     }
 }

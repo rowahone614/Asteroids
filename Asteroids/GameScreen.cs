@@ -29,27 +29,28 @@ namespace Asteroids
         int asteroidSpeed = 3;
         int asteroidDirection;
         int asteroidSize = 10;
-        int asteroidInterval = 75;
+        int asteroidInterval = 75 - (5 * (OptionsScreen.setStartingLevel - 1));
 
         int frameCounter = 0;
         int tickCounter = 51;
         int turnCounter = 0;
         int shotCounter = 51;
         int speedController = 0;
+        int levelCounter = OptionsScreen.setStartingLevel;
 
         int lazerSpeed = 5;
         int lazerSize = 3;
 
-        SolidBrush shipBrush = new SolidBrush(Color.White);
-        SolidBrush asteroidBrush = new SolidBrush(Color.Red);
-        SolidBrush lazerBrush = new SolidBrush(Color.Cyan);
+        SolidBrush redBrush = new SolidBrush(Color.Red);
+        SolidBrush blueBrush = new SolidBrush(Color.Cyan);
+        SolidBrush yellowBrush = new SolidBrush(Color.Yellow);
+        SolidBrush greenBrush = new SolidBrush(Color.Lime);
 
         SoundPlayer lazerBlast = new SoundPlayer(Properties.Resources.lazerBlast);
         SoundPlayer crashSound = new SoundPlayer(Properties.Resources.crashSound);
         Random rand = new Random();
 
         Asteroids shipHitBox = new Asteroids(20, 240, 240, "Up");
-
 
         public void SetParameters()
         {
@@ -199,8 +200,9 @@ namespace Asteroids
                 }
             }
 
-            if (speedController >= 500 && asteroidInterval >= 30)
+            if (speedController >= 500 && asteroidInterval > 30)
             {
+                levelCounter++;
                 asteroidInterval -= 3;
                 speedController = 0;
             }
@@ -235,6 +237,7 @@ namespace Asteroids
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
+            levelLabel.Text = "Level : " + levelCounter;
             ControlShip();
             AsteroidControl();
             frameCounter++;
@@ -248,11 +251,39 @@ namespace Asteroids
 
             foreach (Asteroids a in asteroidList)
             {
-                e.Graphics.FillRectangle(asteroidBrush, a.asteroidX, a.asteroidY, a.size, a.size);
+                switch (OptionsScreen.setAsteroidColour)
+                {
+                    case 0:
+                        e.Graphics.FillRectangle(redBrush, a.asteroidX, a.asteroidY, a.size, a.size);
+                        break;
+                    case 1:
+                        e.Graphics.FillRectangle(blueBrush, a.asteroidX, a.asteroidY, a.size, a.size);
+                        break;
+                    case 2:
+                        e.Graphics.FillRectangle(greenBrush, a.asteroidX, a.asteroidY, a.size, a.size);
+                        break;
+                    case 3:
+                        e.Graphics.FillRectangle(yellowBrush, a.asteroidX, a.asteroidY, a.size, a.size);
+                        break;
+                }
             }
             foreach (Lazers l in lazerList)
             {
-                e.Graphics.FillRectangle(lazerBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
+                switch (OptionsScreen.setLazerColour)
+                {
+                    case 0:
+                        e.Graphics.FillRectangle(redBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
+                        break;
+                    case 1:
+                        e.Graphics.FillRectangle(blueBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
+                        break;
+                    case 2:
+                        e.Graphics.FillRectangle(greenBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
+                        break;
+                    case 3:
+                        e.Graphics.FillRectangle(yellowBrush, l.lazerX, l.lazerY, lazerSize, lazerSize);
+                        break;
+                }
             }
             Point[] triangle = new Point[3];
             switch (turnCounter)
@@ -261,25 +292,81 @@ namespace Asteroids
                     triangle[0] = new Point(250, 230);
                     triangle[1] = new Point(240, 270);
                     triangle[2] = new Point(260, 270);
-                    e.Graphics.FillPolygon(shipBrush, triangle);
+                    switch (OptionsScreen.setShipColour)
+                    {
+                        case 0:
+                            e.Graphics.FillPolygon(redBrush, triangle);
+                            break;
+                        case 1:
+                            e.Graphics.FillPolygon(blueBrush, triangle);
+                            break;
+                        case 2:
+                            e.Graphics.FillPolygon(greenBrush, triangle);
+                            break;
+                        case 3:
+                            e.Graphics.FillPolygon(yellowBrush, triangle);
+                            break;
+                    }
                     break;
                 case 1:
                     triangle[0] = new Point(230, 250);
                     triangle[1] = new Point(270, 260);
                     triangle[2] = new Point(270, 240);
-                    e.Graphics.FillPolygon(shipBrush, triangle);
+                    switch (OptionsScreen.setShipColour)
+                    {
+                        case 0:
+                            e.Graphics.FillPolygon(redBrush, triangle);
+                            break;
+                        case 1:
+                            e.Graphics.FillPolygon(blueBrush, triangle);
+                            break;
+                        case 2:
+                            e.Graphics.FillPolygon(greenBrush, triangle);
+                            break;
+                        case 3:
+                            e.Graphics.FillPolygon(yellowBrush, triangle);
+                            break;
+                    }
                     break;
                 case 2:
                     triangle[0] = new Point(250, 270);
                     triangle[1] = new Point(260, 230);
                     triangle[2] = new Point(240, 230);
-                    e.Graphics.FillPolygon(shipBrush, triangle);
+                    switch (OptionsScreen.setShipColour)
+                    {
+                        case 0:
+                            e.Graphics.FillPolygon(redBrush, triangle);
+                            break;
+                        case 1:
+                            e.Graphics.FillPolygon(blueBrush, triangle);
+                            break;
+                        case 2:
+                            e.Graphics.FillPolygon(greenBrush, triangle);
+                            break;
+                        case 3:
+                            e.Graphics.FillPolygon(yellowBrush, triangle);
+                            break;
+                    }
                     break;
                 case 3:
                     triangle[0] = new Point(230, 240);
                     triangle[1] = new Point(230, 260);
                     triangle[2] = new Point(270, 250);
-                    e.Graphics.FillPolygon(shipBrush, triangle);
+                    switch (OptionsScreen.setShipColour)
+                    {
+                        case 0:
+                            e.Graphics.FillPolygon(redBrush, triangle);
+                            break;
+                        case 1:
+                            e.Graphics.FillPolygon(blueBrush, triangle);
+                            break;
+                        case 2:
+                            e.Graphics.FillPolygon(greenBrush, triangle);
+                            break;
+                        case 3:
+                            e.Graphics.FillPolygon(yellowBrush, triangle);
+                            break;
+                    }
                     break;
                 case 4:
                     turnCounter = 0;

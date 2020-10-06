@@ -31,9 +31,13 @@ namespace Asteroids
             Application.Exit();
         }
 
-        private void GameOver_Load(object sender, EventArgs e)
+        private void menuButton_Click(object sender, EventArgs e)
         {
-
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            StartScreen ss = new StartScreen();
+            f.Controls.Add(ss);
+            ss.Focus();
         }
     }
 }
