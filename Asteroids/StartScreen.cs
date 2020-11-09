@@ -46,5 +46,17 @@ namespace Asteroids
             f.Controls.Add(os);
             os.Focus();
         }
+
+        private void startButton_Enter(object sender, EventArgs e)
+        {
+            startButton.BackColor = Color.Turquoise;
+            optionsButton.BackColor = Color.LightGray;
+        }
+
+        private void optionsButton_Enter(object sender, EventArgs e)
+        {
+            startButton.BackColor = Color.LightGray;
+            optionsButton.BackColor = Color.Turquoise;
+        }
     }
 }

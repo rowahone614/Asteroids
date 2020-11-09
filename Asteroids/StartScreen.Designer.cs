@@ -41,7 +41,6 @@
             // startButton
             // 
             this.startButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aquamarine;
-            this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.startButton.Font = new System.Drawing.Font("Impact", 14F);
             this.startButton.Location = new System.Drawing.Point(175, 248);
             this.startButton.Name = "startButton";
@@ -50,6 +49,7 @@
             this.startButton.Text = "Start Game";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            this.startButton.Enter += new System.EventHandler(this.startButton_Enter);
             // 
             // titleLabel
             // 
@@ -104,6 +104,7 @@
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = true;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            this.optionsButton.Enter += new System.EventHandler(this.optionsButton_Enter);
             // 
             // StartScreen
             // 

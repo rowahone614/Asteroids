@@ -55,6 +55,7 @@
             this.playAgainButton.Text = "Play Again";
             this.playAgainButton.UseVisualStyleBackColor = true;
             this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
+            this.playAgainButton.Enter += new System.EventHandler(this.playAgainButton_Enter);
             // 
             // quitButton
             // 
@@ -66,6 +67,7 @@
             this.quitButton.Text = "Quit Game";
             this.quitButton.UseVisualStyleBackColor = true;
             this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
+            this.quitButton.Enter += new System.EventHandler(this.quitButton_Enter);
             // 
             // menuButton
             // 
@@ -77,6 +79,7 @@
             this.menuButton.Text = "Main Menu";
             this.menuButton.UseVisualStyleBackColor = true;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
+            this.menuButton.Enter += new System.EventHandler(this.menuButton_Enter);
             // 
             // GameOver
             // 
